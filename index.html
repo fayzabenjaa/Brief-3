@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,36 +11,51 @@
 </head>
 
 <body>
-    <header id="header" class="bg-blue-950 text-white p-4 rounded">
-        <div class="grid grid-cols-[minmax(150px,_1fr)] gap-4 p-5">
-            <a>TACHKILA</a>
-        </div>
-        <div>
-            <P>GB</P>
-            <P>DEF</P>
-            <P>MIL</P>
-            <P>ATT</P>
-        </div>
-        <div>
-            <p>schéma</p>
+    <header id="header" class="bg-gray-600 text-white p-4">
+
+        <div class="grid grid-cols-3">
             <div>
-                <p>4-4-2</p>
+                <a>TACHKILA</a>
+            </div>
+            <div>
+                <div class="flex gap-2 justify-center items-center">
+                    <div class="w-2 h-2 bg-yellow-300 rounded-full"></div>
+                    <P class="text-yellow-300 mr-5">GB</P>
+                    <div class="w-2 h-2 bg-blue-600 rounded-full"></div>
+                    <P class="text-blue-600 mr-5">DEF</P>
+                    <div class="w-2 h-2 bg-green-600 rounded-full"></div>
+                    <P class="text-green-600 mr-5">MIL</P>
+                    <div class="w-2 h-2 bg-red-600 rounded-full"></div>
+                    <P class="text-red-600 mr-5">ATT</P>
+                </div>
+            </div>
+            <div class="flex justify-end gap-5">
+                <p>schéma</p>
+                <div class="bg-gray-500 rounded-2xl">
+                    <p>4-4-2</p>
+                </div>
             </div>
         </div>
     </header>
-    <!-- <aside id="aside">
-        <button>+Ajouter un joueur</button>
-        <div>
-            <p>effectif</p>
-            <div>
-                <p>1 joueur(s)</p>
+    <div class="grid grid-cols-4 min-h-screen" >
+        <aside class="bg-gray-600 " id="aside">
+            <button class="p-2 ml-2 bg-green-400 text-center w-[18em] rounded-lg">+Ajouter un joueur</button>
+            <div class="flex ">
+                <p>effectif</p>
+                <div class="bg-gray-500 w-full rounded-2xl">
+                    <p class="text-left">1 joueur(s)</p>
+                </div>
             </div>
-        </div>
+            <div>
+                <p>cliquez sur un joueur placé pour voir sa case sur le terrain. pour modifier, pour supprimer.</p>
+            </div>
+        </aside>
         <div>
-            <p>cliquez sur un joueur placé pour voir sa case sur le terrain. pour modifier, pour supprimer.</p>
+            <p>r</p>
         </div>
-    </aside> -->
-    
-</body>
-</html>
 
+    </div>
+
+</body>
+
+</html>
