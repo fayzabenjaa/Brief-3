@@ -39,9 +39,11 @@
             </div>
         </div>
     </header>
+
     <div class="grid grid-cols-4 min-h-screen w-full text-white">
         <aside class="bg-[#1E293B] " id="aside">
-            <button class="p-2 ml-3 bg-[#22C55E] text-center w-[18em] rounded-lg ">+Ajouter un joueur</button>
+            <button class="p-2 ml-3 bg-[#22C55E] text-center w-[18em] rounded-lg" id="Ajouter">+Ajouter un
+                joueur</button>
             <div class="flex justify-between m-3">
                 <p>effectif</p>
                 <div class="bg-gray-500  rounded-2xl">
@@ -51,6 +53,11 @@
             <div class="p-2 ">
                 <p>cliquez sur un joueur placé pour voir sa case sur le terrain. pour modifier, pour supprimer.</p>
             </div>
+
+            <ul id="liste">
+                <li>
+                </li>
+            </ul>
 
         </aside>
         <main class="col-start-2 col-end-5 bg-[#0F172A] p-30">
@@ -146,41 +153,11 @@
                     <div class="w-12 h-12 bg-[#1E293B] rounded-2xl"></div>
                     <div class="w-12 h-12 bg-[#1E293B] rounded-2xl"></div>
                     <div class="w-12 h-12 bg-[#1E293B] rounded-2xl"></div>
-                    <div class="w-12 h-12 bg-[#1E293B] rounded-2xl"></div>
-                    <div class="w-12 h-12 bg-[#1E293B] rounded-2xl"></div>
-                    <div class="w-12 h-12 bg-[#1E293B] rounded-2xl"></div>
-                    <div class="w-12 h-12 bg-[#1E293B] rounded-2xl"></div>
-                    <div class="w-12 h-12 bg-[#1E293B] rounded-2xl"></div>
-                    <div class="w-12 h-12 bg-[#1E293B] rounded-2xl"></div>
-                    <div class="w-12 h-12 bg-[#1E293B] rounded-2xl"></div>
-                    <div class="w-12 h-12 bg-[#1E293B] rounded-2xl"></div>
-                    <div class="w-12 h-12 bg-[#1E293B] rounded-2xl"></div>
-                    <div class="w-12 h-12 bg-[#1E293B] rounded-2xl"></div>
-                    <div class="w-12 h-12 bg-[#1E293B] rounded-2xl"></div>
-                    <div class="w-12 h-12 bg-[#1E293B] rounded-2xl"></div>
-                    <div class="w-12 h-12 bg-[#1E293B] rounded-2xl"></div>
-                    <div class="w-12 h-12 bg-[#1E293B] rounded-2xl"></div>
-                    <div class="w-12 h-12 bg-[#1E293B] rounded-2xl"></div>
-                    <div class="w-12 h-12 bg-[#1E293B] rounded-2xl"></div>
-                    <div class="w-12 h-12 bg-[#1E293B] rounded-2xl"></div>
-                    <div class="w-12 h-12 bg-[#1E293B] rounded-2xl"></div>
-                    <div class="w-12 h-12 bg-[#1E293B] rounded-2xl"></div>
-                    <div class="w-12 h-12 bg-[#1E293B] rounded-2xl"></div>
-                    <div class="w-12 h-12 bg-[#1E293B] rounded-2xl"></div>
-                    <div class="w-12 h-12 bg-[#1E293B] rounded-2xl"></div>
-                    <div class="w-12 h-12 bg-[#1E293B] rounded-2xl"></div>
-                    <div class="w-12 h-12 bg-[#1E293B] rounded-2xl"></div>
-                    <div class="w-12 h-12 bg-[#1E293B] rounded-2xl"></div>
-                    <div class="w-12 h-12 bg-[#1E293B] rounded-2xl"></div>
-                    <div class="w-12 h-12 bg-[#1E293B] rounded-2xl"></div>
-                    <div class="w-12 h-12 bg-[#1E293B] rounded-2xl"></div>
-                    <div class="w-12 h-12 bg-[#1E293B] rounded-2xl"></div>
-                    <div class="w-12 h-12 bg-[#1E293B] rounded-2xl"></div>
-                    <div class="w-12 h-12 bg-[#1E293B] rounded-2xl"></div>
 
                     <!-- exemples to use  -->
                     <!-- Yellow -->
-                    <div class="col-start-1 col-span-2 row-start-4 row-span-3 h-full bg-[#111827] border-2 border-dashed border-yellow-500 rounded-2xl">
+                    <div
+                        class="col-start-1 col-span-2 row-start-4 row-span-3 h-full bg-[#111827] border-2 border-dashed border-yellow-500 rounded-2xl">
                         <div class="flex items-center justify-center h-full gap-2">
                             <div>
                                 <p class="text-yellow-500  font-bold">GB</p>
@@ -256,6 +233,41 @@
     </div>
     </main>
 
+    <div id="popup" class="bg-[#1E293B] rounded-2xl relative p-50 flex-row text-start">
+        <div class="flex">
+            <p class="text-white font-bold m-5 ">Ajouter un joueur</p>
+            <button class="text-gray-400 justify-end">X</button>
+        </div>
+        <p class="text-gray-400 m-5">nom complet</p>
+        <input type="text" class="bg-[#0F172A] rounded-2xl p-4 ml-3">
+        <p class="text-gray-400 m-5">poste</p>
+        <div class="grid grid-cols-2 gap-5 m-5">
+            <button class="bg-[#0F172A] rounded-2xl text-white flex justify-center p-4
+            flex gap-2 justify-center items-center">
+                <div class="w-2 h-2 bg-yellow-300 rounded-full"></div>Gardien
+            </button>
+            <button class="bg-[#0F172A] rounded-2xl text-white flex justify-center p-4
+            flex gap-2 justify-center items-center">
+                <div class="w-2 h-2 bg-blue-600 rounded-full"></div>défenseur
+            </button>
+        </div>
+        <div class="grid grid-cols-2 gap-5 m-5">
+            <button class="bg-[#0F172A] rounded-2xl text-white flex justify-center p-4
+            flex gap-2 justify-center items-center">
+                <div class="w-2 h-2 bg-green-600 rounded-full"></div>Milieu
+            </button>
+            <button
+                class="bg-[#0F172A] rounded-2xl text-white flex justify-center p-4flex gap-2 justify-center items-center">
+                <div class="w-2 h-2 bg-red-600 rounded-full"></div>attaquant
+            </button>
+        </div>
+        <p class="text-gray-400 m-5">numéro(1 à 99)</p>
+        <input type="text" class="bg-[#0F172A] rounded-2xl p-4 ml-3">
+        <div class="flex justify-end">
+            <button class="text-white bg-gray-500 rounded-2xl p-2 m-3">Annuler</button>
+            <button class="bg-green-600 rounded-2xl p-2 m-3 text-white">Ajouter</button>
+        </div>
+    </div>
     </div>
 
 </body>
