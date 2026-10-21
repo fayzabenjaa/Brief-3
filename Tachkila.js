@@ -1,1 +1,3 @@
-const Ajouter = document.querySelector("#Ajouter");
+const ajouter = document.querySelector("#Ajouter");
+
+ajouter.addEventListener("click", function )
