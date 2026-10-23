@@ -2,44 +2,59 @@ const openbtn = document.querySelector("#Ajouter");
 const popup = document.querySelector("#popup");
 const overlay = document.querySelector("#bgblur");
 const closebtn = document.querySelector("#X");
+const Annuler = document.querySelector("#Annuler");
 
-function openpopup() {  
-    popup.style.display = 'block'
-    overlay.style.display = 'block'
-};
+function openpopup() {
+  overlay.classList.remove("hidden");
+
+}
 function closepopup() {
-    popup.style.display = 'none'
-    overlay.style.display = 'none'
-};
+  overlay.classList.add("hidden");
+}
+function Annulerpopup() {
+  overlay.classList.add("hidden");
+}
 
-openbtn.addEventListener('click', openpopup)
-closebtn.addEventListener('click', closepopup)
+openbtn.addEventListener("click", openpopup);
+closebtn.addEventListener("click", closepopup);
+Annuler.addEventListener("click", Annulerpopup);
+
+
+const confirm = document.querySelector('#confirm');
+const nom = document.querySelector('#player')
+const number = document.querySelector('#number')
+
+function fconfirm() {
+  const liste = document.querySelector('#liste');
+   const inputArray = [];
+
+  const playername = nom.value;
+  const playernumber = number.value;
+
+  const error = document.querySelector('#error')
+  const errorn = document.querySelector('#errorn')
+  if (playername == ""){
+    error.innerText = "entre nom"  
+  }else{
+    inputArray.push(playername, playernumber,);
+    console.log(inputArray);
+  }
+  if (playernumber == "") {
+    errorn.innerText = "entre numbre"
+  }else{
+    inputArray.push(playername, playernumber,);
+console.log(inputArray);
+  }
+
+return;
+}
+confirm.addEventListener('click', fconfirm);
 
 
 
-// const player = document.querySelector("#player")
-// function valideplayer() {
-//     const input = document.querySelector('#player')
-//     const error = document.querySelector('#name-error')
-//     const pname = input.value.trim();
-//     if ( pname === "") {
-//         error.innerText = "entrer le nom du joueur"
-//     } else if {
 
-//     }  
-    
-// }
-// const number = document.querySelector("#number")
-// function validenumber () {
-//     const input = document.querySelector('#number')
-//     const error = document.querySelector('#number-error')
-//     const pnumbre = input.value.trim();
-//     if(pnumber === "") {
-//         error.innerText = "entrer le nombre"
-//     } else if (!/^$) {
 
-//     }
-// }
+
 
 
 
