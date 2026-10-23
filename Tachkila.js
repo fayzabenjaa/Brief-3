@@ -46,6 +46,11 @@ function fconfirm() {
     errorn.classList.add('hidden')
    inputArray.push(playername, playernumber,);
    console.log(inputArray);
+   for(let i=0; i< inputArray.length; i++){
+    const li = document.createElement("li");
+    li.innerText = inputArray[i];
+    liste.appendChild(li)
+   }
    if (nom) {
                 nom.value = "";
             } else {
@@ -62,6 +67,7 @@ function fconfirm() {
 return;
 }
 confirm.addEventListener('click', fconfirm);
+
 
 
 
