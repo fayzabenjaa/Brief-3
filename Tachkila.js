@@ -33,17 +33,30 @@ function fconfirm() {
 
   const error = document.querySelector('#error')
   const errorn = document.querySelector('#errorn')
-  if (playername == ""){
-    error.innerText = "entre nom"  
-  }else{
-    inputArray.push(playername, playernumber,);
-    console.log(inputArray);
-  }
-  if (playernumber == "") {
+  if (playernumber == "" && playername == ""){
+    error.innerText = "entre nom"
     errorn.innerText = "entre numbre"
-  }else{
-    inputArray.push(playername, playernumber,);
-console.log(inputArray);
+  }else if (playername == ""){
+   error.innerText = "entre nom"
+  } else if (playernumber == "") {
+    errorn.innerText = "entre numbre"
+  }
+  else{
+    error.classList.add('hidden')
+    errorn.classList.add('hidden')
+   inputArray.push(playername, playernumber,);
+   console.log(inputArray);
+   if (nom) {
+                nom.value = "";
+            } else {
+                console.error("Input element not found.");
+            } 
+  if (number) {
+    number.value = "";
+  }else {
+    console.error("Input element not found.")
+  }
+  overlay.classList.add("hidden");
   }
 
 return;
