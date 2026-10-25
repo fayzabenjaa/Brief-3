@@ -4,6 +4,10 @@ const overlay = document.querySelector("#bgblur");
 const closebtn = document.querySelector("#X");
 const Annuler = document.querySelector("#Annuler");
 
+const playerCard = document.querySelector('#player-card')
+
+
+
 function openpopup() {
   overlay.classList.remove("hidden");
 }
@@ -28,9 +32,14 @@ function fconfirm() {
 
   const playername = nom.value;
   const playernumber = number.value;
+  const poste = document.querySelector('input[name="position"]:checked')
+  
+
 
   const error = document.querySelector("#error");
   const errorn = document.querySelector("#errorn");
+  const errorr = document.querySelector("#error");
+
   if (playernumber == "" && playername == "") {
     error.innerText = "entre nom";
     errorn.innerText = "entre numbre";
@@ -40,10 +49,16 @@ function fconfirm() {
   } else if (playernumber == "") {
     errorn.innerText = "entre numbre";
     error.classList.add("hidden");
-  } else {
+  } 
+  else if (!/^[a-zA-Z]+$/.test(playername)) {
+    error.innerText = "les numéros ne sont pas valides";
+  }
+ 
+   else {
     error.classList.add("hidden");
     errorn.classList.add("hidden");
-    inputArray.push(playername, playernumber);
+    const playerRole = poste.value;
+    inputArray.push(playername, playernumber, playerRole);
     console.log(inputArray);
     for (let i = 0; i < inputArray.length; i++) {
       const li = document.createElement("li");
@@ -60,9 +75,16 @@ function fconfirm() {
     } else {
       console.error("Input element not found.");
     }
+    if (poste) {
+      poste.value = "";
+    } else {
+      console.error("Input element not found.")
+    }
     overlay.classList.add("hidden");
+
   }
 
   return;
 }
 confirm.addEventListener("click", fconfirm);
+

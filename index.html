@@ -59,16 +59,16 @@
             <div class="relative w-full max-w-[400px] rounded-2xl border border-[#344155] bg-[#1e293b] p-4">
 
 
-                <div class="flex items-center justify-between">
+                <div id="player-card" class="flex items-center justify-between">
                     <div class="flex items-center gap-4">
                         <div
                             class="flex h-10 w-10 items-center justify-center rounded-full border-2 border-[#926b20] text-sm font-bold text-[#d4a32f]">
-                            1
+                            1    <!--player number-->
                         </div>
 
                         <div>
-                            <h2 class=" text-gray-300">bono</h2>
-                            <p class="text-sm text-[#d4a32f]">Gardien</p>
+                            <h2 class=" text-gray-300">bono</h2> <!--player name-->
+                            <p class="text-sm text-[#d4a32f]">Gardien</p> <!--player role-->
                         </div>
                     </div>
 
@@ -85,7 +85,7 @@
                     </div>
                 </div>
                 <div class="relative mt-3">
-                    <select
+                    <select id = ""
                         class="w-full rounded-lg border border-[#344155] bg-[#1e293b] px-4 py-3 pr-10 text-sm text-gray-300">
                         <option>Sur le banc</option>
                         <option selected>GB - Gardien</option>
@@ -325,6 +325,7 @@
                 </label>
 
             </div>
+            <p id="errorr" class="text-red-400 text-1xl m-1"></p>
 
             <div class="flex flex-col">
                 <label for="number" class="text-gray-400 m-2">numéro(1 à 99)</label>
