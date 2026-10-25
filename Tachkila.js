@@ -4,8 +4,6 @@ const overlay = document.querySelector("#bgblur");
 const closebtn = document.querySelector("#X");
 const Annuler = document.querySelector("#Annuler");
 
-// const playerCard = document.querySelector('#player-card')
-
 function openpopup() {
   overlay.classList.remove("hidden");
 }
@@ -22,12 +20,22 @@ Annuler.addEventListener("click", Annulerpopup);
 
 function playercard() {
   const playerCard = document.querySelector("#player-card");
+  // const editbtn = document.querySelector("#edit");
+  // function editcard() {
+  //     overlay.classList.remove("hidden");
+  //     inputArray[i].name == player.value;
+  //     inputArray[i].number == player.value;
+  //   }
+  //   editbtn.addEventListener('click', editcard);
   playerCard.innerHTML = ` `;
 
   for (let i = 0; i < inputArray.length; i++) {
+    const editbtn = document.querySelector("#edit");
+    const deletebtn = document.querySelector("#delete");
+
     const player = inputArray[i];
     if (player.role == "Gardien") {
-    playerCard.innerHTML += `
+      playerCard.innerHTML += `
       <div class="relative w-full max-w-[400px] rounded-2xl border border-[#344155] bg-[#1e293b] p-4">
         <div class="flex items-center justify-between">
           <div class="flex items-center gap-4">
@@ -40,8 +48,8 @@ function playercard() {
           </div>
 
           <div class="flex items-center gap-4">
-            <button class="text-[#c17a62]">edit</button>
-            <button class="text-gray-500">delete</button>
+            <button id="edit" class="text-[#c17a62]">edit</button>
+            <button id="delet" class="text-gray-500">delete</button>
           </div>
         </div>
       </div>
@@ -62,6 +70,15 @@ function playercard() {
           </select>
         </div>
     `;
+      const editbtn = document.querySelector("#edit");
+      function editcard() {
+        overlay.classList.remove("hidden");
+        const newplayername = player.value;
+        const newplayernumber = number.value;
+        
+
+      }
+      editbtn.addEventListener("click", editcard);
     } else if (player.role == "Défenseur") {
       playerCard.innerHTML += `
       <div class="relative w-full max-w-[400px] rounded-2xl border border-[#344155] bg-[#1e293b] p-4">
@@ -76,8 +93,8 @@ function playercard() {
           </div>
 
           <div class="flex items-center gap-4">
-            <button class="text-[#c17a62]">edit</button>
-            <button class="text-gray-500">delete</button>
+            <button id="edit" class="text-[#c17a62]">edit</button>
+            <button id="delet" class="text-gray-500">delete</button>
           </div>
         </div>
       </div>
@@ -98,6 +115,12 @@ function playercard() {
           </select>
         </div>
     `;
+    function editcard() {
+        overlay.classList.remove("hidden");
+        inputArray[i].name == player.value;
+        inputArray[i].number == player.value;
+      }
+    editbtn.addEventListener("click", editcard);
     } else if (player.role == "Milieu") {
       playerCard.innerHTML += `
       <div class="relative w-full max-w-[400px] rounded-2xl border border-[#344155] bg-[#1e293b] p-4">
@@ -112,8 +135,8 @@ function playercard() {
           </div>
 
           <div class="flex items-center gap-4">
-            <button class="text-[#c17a62]">edit</button>
-            <button class="text-gray-500">delete</button>
+            <button id="edit" class="text-[#c17a62]">edit</button>
+            <button id="delete" class="text-gray-500">delete</button>
           </div>
         </div>
       </div>
@@ -134,6 +157,12 @@ function playercard() {
           </select>
         </div>
     `;
+    function editcard() {
+        overlay.classList.remove("hidden");
+        inputArray[i].name == player.value;
+        inputArray[i].number == player.value;
+      }
+    editbtn.addEventListener("click", editcard);
     } else if (player.role == "Attaquant") {
       playerCard.innerHTML += `
       <div class="relative w-full max-w-[400px] rounded-2xl border border-[#344155] bg-[#1e293b] p-4">
@@ -148,8 +177,8 @@ function playercard() {
           </div>
 
           <div class="flex items-center gap-4">
-            <button class="text-[#c17a62]">edit</button>
-            <button class="text-gray-500">delete</button>
+            <button id="edit" class="text-[#c17a62]">edit</button>
+            <button id="delete" class="text-gray-500">delete</button>
           </div>
         </div>
       </div>
@@ -170,6 +199,12 @@ function playercard() {
           </select>
         </div>
     `;
+    function editcard() {
+        overlay.classList.remove("hidden");
+        inputArray[i].name == player.value;
+        inputArray[i].number == player.value;
+      }
+    editbtn.addEventListener("click", editcard);
     }
   }
 }
@@ -205,19 +240,18 @@ function fconfirm() {
     error.classList.add("hidden");
     errorn.classList.add("hidden");
     const playerRole = poste.value;
-    // inputArray.push(playername, playernumber, playerRole);
+
     inputArray.push({
       name: playername,
       number: playernumber,
       role: playerRole,
     });
-    
+
     playercard();
     console.log(inputArray);
     for (let i = 0; i < inputArray.length; i++) {
       const li = document.createElement("li");
       li.innerText = inputArray[i];
-      // liste.appendChild(li);
     }
     if (nom) {
       nom.value = "";
@@ -229,14 +263,10 @@ function fconfirm() {
     } else {
       console.error("Input element not found.");
     }
-    if (poste) {
-      poste.value = "";
-    } else {
-      console.error("Input element not found.");
-    }
+
     overlay.classList.add("hidden");
   }
-  
+
   return;
 }
 confirm.addEventListener("click", fconfirm);

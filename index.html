@@ -53,7 +53,8 @@
                 <p>cliquez sur un joueur placé pour voir sa case sur le terrain. pour modifier, pour supprimer.</p>
             </div>
 
-            <div id="player-card"></div>
+            <div id="player-card">
+            </div>
             
 
 
@@ -247,14 +248,14 @@
 
             <div id="poste" class="grid grid-cols-2 gap-5 m-5">
 
-                <label
+                <label id="Gardien"
                     class="bg-[#0F172A] rounded-2xl text-white flex justify-center p-4 gap-2 items-center cursor-pointer has-[:checked]:ring-2 has-[:checked]:ring-yellow-500">
-                    <input id="Gardien" type="radio" name="position" value="Gardien" class="appearance-none">
+                    <input type="radio" name="position" value="Gardien" class="appearance-none">
                     <div class="w-2 h-2 bg-yellow-300 rounded-full"></div>
                     Gardien
                 </label>
 
-                <label
+                <label id="Défenseur"
                     class="bg-[#0F172A] rounded-2xl text-white flex justify-center p-4 gap-2 items-center cursor-pointer has-[:checked]:ring-2 has-[:checked]:ring-blue-500">
                     <input type="radio" name="position" value="Défenseur" class=" appearance-none">
                     <div class="w-2 h-2 bg-blue-600 rounded-full"></div>
