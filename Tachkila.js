@@ -26,6 +26,7 @@ function playercard() {
 
   for (let i = 0; i < inputArray.length; i++) {
     const player = inputArray[i];
+    if (player.role == "Gardien") {
     playerCard.innerHTML += `
       <div class="relative w-full max-w-[400px] rounded-2xl border border-[#344155] bg-[#1e293b] p-4">
         <div class="flex items-center justify-between">
@@ -61,6 +62,115 @@ function playercard() {
           </select>
         </div>
     `;
+    } else if (player.role == "Défenseur") {
+      playerCard.innerHTML += `
+      <div class="relative w-full max-w-[400px] rounded-2xl border border-[#344155] bg-[#1e293b] p-4">
+        <div class="flex items-center justify-between">
+          <div class="flex items-center gap-4">
+            <div class="text-blue-500">${player.number}</div>
+
+            <div>
+              <h2 class="text-gray-300">${player.name}</h2>
+              <p class="text-sm text-blue-500">${player.role}</p>
+            </div>
+          </div>
+
+          <div class="flex items-center gap-4">
+            <button class="text-[#c17a62]">edit</button>
+            <button class="text-gray-500">delete</button>
+          </div>
+        </div>
+      </div>
+      <div class="relative mt-3">
+          <select class="w-full rounded-lg border border-[#344155] bg-[#1e293b] px-4 py-3 pr-10 text-sm text-gray-300">
+            <option>Sur le banc</option>
+            <option>GB - Gardien</option>
+            <option>DG - Défenseur gauche</option>
+            <option>DC - Défenseur central 1</option>
+            <option>DC - Défenseur central 2</option>
+            <option>DD - Défenseur droit</option>
+            <option>MG - Milieu gauche</option>
+            <option>MC - Milieu central 1</option>
+            <option>MC - Milieu central 2</option>
+            <option>MD - Milieu droit</option>
+            <option>BU - Buteur 1</option>
+            <option>BU - Buteur 2</option>
+          </select>
+        </div>
+    `;
+    } else if (player.role == "Milieu") {
+      playerCard.innerHTML += `
+      <div class="relative w-full max-w-[400px] rounded-2xl border border-[#344155] bg-[#1e293b] p-4">
+        <div class="flex items-center justify-between">
+          <div class="flex items-center gap-4">
+            <div class="text-green-500">${player.number}</div>
+
+            <div>
+              <h2 class="text-gray-300">${player.name}</h2>
+              <p class="text-sm text-green-500">${player.role}</p>
+            </div>
+          </div>
+
+          <div class="flex items-center gap-4">
+            <button class="text-[#c17a62]">edit</button>
+            <button class="text-gray-500">delete</button>
+          </div>
+        </div>
+      </div>
+      <div class="relative mt-3">
+          <select class="w-full rounded-lg border border-[#344155] bg-[#1e293b] px-4 py-3 pr-10 text-sm text-gray-300">
+            <option>Sur le banc</option>
+            <option>GB - Gardien</option>
+            <option>DG - Défenseur gauche</option>
+            <option>DC - Défenseur central 1</option>
+            <option>DC - Défenseur central 2</option>
+            <option>DD - Défenseur droit</option>
+            <option>MG - Milieu gauche</option>
+            <option>MC - Milieu central 1</option>
+            <option>MC - Milieu central 2</option>
+            <option>MD - Milieu droit</option>
+            <option>BU - Buteur 1</option>
+            <option>BU - Buteur 2</option>
+          </select>
+        </div>
+    `;
+    } else if (player.role == "Attaquant") {
+      playerCard.innerHTML += `
+      <div class="relative w-full max-w-[400px] rounded-2xl border border-[#344155] bg-[#1e293b] p-4">
+        <div class="flex items-center justify-between">
+          <div class="flex items-center gap-4">
+            <div class="text-red-500">${player.number}</div>
+
+            <div>
+              <h2 class="text-gray-300">${player.name}</h2>
+              <p class="text-sm text-red-500">${player.role}</p>
+            </div>
+          </div>
+
+          <div class="flex items-center gap-4">
+            <button class="text-[#c17a62]">edit</button>
+            <button class="text-gray-500">delete</button>
+          </div>
+        </div>
+      </div>
+      <div class="relative mt-3">
+          <select class="w-full rounded-lg border border-[#344155] bg-[#1e293b] px-4 py-3 pr-10 text-sm text-gray-300">
+            <option>Sur le banc</option>
+            <option>GB - Gardien</option>
+            <option>DG - Défenseur gauche</option>
+            <option>DC - Défenseur central 1</option>
+            <option>DC - Défenseur central 2</option>
+            <option>DD - Défenseur droit</option>
+            <option>MG - Milieu gauche</option>
+            <option>MC - Milieu central 1</option>
+            <option>MC - Milieu central 2</option>
+            <option>MD - Milieu droit</option>
+            <option>BU - Buteur 1</option>
+            <option>BU - Buteur 2</option>
+          </select>
+        </div>
+    `;
+    }
   }
 }
 
