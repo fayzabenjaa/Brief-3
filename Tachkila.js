@@ -249,22 +249,60 @@ function playercard() {
           </div>
         </div>
       </div>
-      <div class="relative mt-3">
-          <select class="w-full rounded-lg border border-[#344155] bg-[#1e293b] px-4 py-3 pr-10 text-sm text-gray-300">
-            <option>Sur le banc</option>
-            <option>MG - Milieu gauche</option>
-            <option>MC - Milieu central 1</option>
-            <option>MC - Milieu central 2</option>
-            <option>MD - Milieu droit</option>
+      <div id="Mpositions" class="relative mt-3">
+          <select class="positionSelect w-full rounded-lg border border-[#344155] bg-[#1e293b] px-4 py-3 pr-10 text-sm text-gray-300">
+            <option value="banc">Sur le banc</option>
+            <option value="MG">MG - Milieu gauche</option>
+            <option value="MC1">MC - Milieu central 1</option>
+            <option value="MC2">MC - Milieu central 2</option>
+            <option value="MD">MD - Milieu droit</option>
           </select>
         </div>
     `;
-      function editcard() {
-        overlay.classList.remove("hidden");
-        inputArray[i].name == player.value;
-        inputArray[i].number == player.value;
+      function mg(player, position) {
+        const target = document.querySelector(`#${position}`);
+
+        if (!target) return;
+
+        target.innerHTML = `
+
+  <p class="text-green-400 font-bold">${player.number}</p>
+  <p class="text-gray-400 text-xs">${player.name}</p>
+`;
+
+        target.classList.remove("border-dashed");
       }
-      editbtn.addEventListener("click", editcard);
+
+      const positionSelects = document.querySelectorAll(".positionSelect");
+
+      positionSelects.forEach((positionSelect, index) => {
+        positionSelect.addEventListener("change", function () {
+          const Milieu = inputArray.filter(
+            (player) => player.role === "Milieu",
+          );
+
+          const player = Milieu[index];
+
+          if (!player) return;
+          if (player.position !== "banc") {
+            const oldPosition = document.querySelector(`#${player.position}`);
+
+            if (oldPosition) {
+              oldPosition.innerHTML = `
+          <p class="text-green-400 font-bold">${player.position}</p>
+          <p class="text-gray-400 text-xs">Libre</p>
+        `;
+              oldPosition.classList.add("border-dashed");
+            }
+          }
+
+          player.position = positionSelect.value;
+
+          if (player.position !== "banc") {
+            mg(player, player.position);
+          }
+        });
+      });
     } else if (player.role == "Attaquant") {
       playerCard.innerHTML += `
       <div class="relative w-full max-w-[350px] border-red-500 rounded-2xl border border-[#344155] bg-[#1e293b] p-4">
