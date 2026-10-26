@@ -41,8 +41,8 @@ function playercard() {
           </div>
 
           <div class="flex items-center gap-4">
-            <button id="edit" class="text-[#c17a62]">edit</button>
-            <button id="delet" class="text-gray-500">delete</button>
+            <button id="editbtn" class="text-[#c17a62]">edit</button>
+            <button id="deletbtn" class="text-gray-500">delete</button>
           </div>
         </div>
       </div>
@@ -52,20 +52,100 @@ function playercard() {
           </select>
         </div>
     `;
+      //edit in the tiran
+      function GardienTrn() {
+        const Gardient = document.querySelector("#Gardient");
+        Gardient.classList.remove("border-dashed");
+        Gardient.innerHTML = `
+        <div class="col-start-1 col-span-2 row-start-4 row-span-3 h-full bg-[#111827] border-2 border-yellow-500 rounded-2xl">
+                        <div class="flex items-center justify-center h-full gap-2">
+                            <span
+                                class="flex items-center justify-center w-10 h-10 rounded-full border-2 border-yellow-500 text-yellow-500 font-bold">${player.number}</span>
+                            <div>
+                                <p class="text-yellow-500 text-xs font-bold">GB</p>
+                                <p class="text-white font-bold text-sm">${player.name}</p>
+                            </div>
+                        </div>
+                    </div>`;
+      }
+      GardienTrn();
+      //edit button
+      const editoverlay = document.querySelector("#bgedit");
+      // const editpopup = document.querySelector("#editpopup");
+      // editpopup.innerHTML = `
+      // <div id="bgedit"
+      //   class="flex justify-center w-full h-full bg-[rgba(0,0,0,0.5)] fixed inset-0 overflow-y-auto overflow-x-hidden fixed z-500 p-2 hidden">
+      //   <div id="editpopup" class="bg-[#1E293B] rounded-2xl relative w-100 h-150 flex-row text-start ">
+      //       <div class="flex justify-between">
+      //           <p class="text-white font-bold m-5 ">Modifier le joueur</p>
+      //           <button class="text-gray-400  m-5" id="X">X</button>
+      //       </div>
+      //       <div class="flex flex-col">
+      //           <label for="player" class="text-gray-400 m-3">nom complet</label>
+      //           <input id="editplayer" name="player" type="text" placeholder="nom du joueur"
+      //               class="bg-[#0F172A] rounded-2xl p-4 ml-3 text-white m-3">
+      //           <p id="error" class="text-red-400 text-1xl m-1"></p>
+      //       </div>
+      //       <p class="text-gray-400 m-3">poste</p>
 
-    // //edit button
-    //   const editoverlay = document.querySelector("#bgedit");
-    //   const editpopup = document.querySelector("#editpopup");
-    //   const editbtn = document.querySelector("#edit");
-    //   function openeditpopup() {
-    //     editoverlay.classList.remove("hidden");
-    //   }
-    //   editbtn.addEventListener("click", openeditpopup);
-    //   //delet button
-    //   const deletbtn = document.querySelector('#delet')
-    //   function deletcard () {
+      //       <div id="editposte" class="grid grid-cols-2 gap-5 m-5">
 
-    //   }
+      //           <label id="Gardien"
+      //               class="bg-[#0F172A] rounded-2xl text-white flex justify-center p-4 gap-2 items-center cursor-pointer has-[:checked]:ring-2 has-[:checked]:ring-yellow-500">
+      //               <input type="radio" name="position" value="Gardien" class="appearance-none">
+      //               <div class="w-2 h-2 bg-yellow-300 rounded-full"></div>
+      //               Gardien
+      //           </label>
+
+      //           <label id="Défenseur"
+      //               class="bg-[#0F172A] rounded-2xl text-white flex justify-center p-4 gap-2 items-center cursor-pointer has-[:checked]:ring-2 has-[:checked]:ring-blue-500">
+      //               <input type="radio" name="position" value="Défenseur" class=" appearance-none">
+      //               <div class="w-2 h-2 bg-blue-600 rounded-full"></div>
+      //               Défenseur
+      //           </label>
+
+      //           <label
+      //               class="bg-[#0F172A] rounded-2xl text-white flex justify-center p-4 gap-2 items-center cursor-pointer has-[:checked]:ring-2 has-[:checked]:ring-green-500">
+      //               <input type="radio" name="position" value="Milieu" class="appearance-none">
+      //               <div class="w-2 h-2 bg-green-600 rounded-full"></div>
+      //               Milieu
+      //           </label>
+
+      //           <label
+      //               class="bg-[#0F172A] rounded-2xl text-white flex justify-center p-4 gap-2 items-center cursor-pointer has-[:checked]:ring-2 has-[:checked]:ring-red-500">
+      //               <input type="radio" name="position" value="Attaquant" class="appearance-none">
+      //               <div class="w-2 h-2 bg-red-600 rounded-full"></div>
+      //               Attaquant
+      //           </label>
+
+      //       </div>
+      //       <p id="errorr" class="text-red-400 text-1xl m-1"></p>
+
+      //       <div class="flex flex-col">
+      //           <label for="number" class="text-gray-400 m-2">numéro(1 à 99)</label>
+      //           <input type="number" min="1" max="99" id="editnumber" name="number" placeholder="numero"
+      //               class="bg-[#0F172A] rounded-2xl p-4 ml-3 text-white m-3">
+      //           <p id="errorn" class="text-red-400 text-1xl m-1 "></p>
+      //       </div>
+      //       <div class="flex justify-end">
+      //           <button id="Annuler" class="text-white bg-gray-500 rounded-2xl p-2 m-3">Annuler</button>
+      //           <button type="submit" id="confirm" class="bg-green-600 rounded-2xl p-2 m-3 text-white">Enregistrer</button>
+      //       </div>
+      //   </div>
+      //    </div>
+      // `;
+
+      // const editbtn = document.querySelector("#editbtn");
+      // function openeditpopup() {
+      //   editoverlay.classList.remove("hidden");
+      // }
+      // editbtn.addEventListener("click", openeditpopup());
+
+      //   //delet button
+      //   const deletbtn = document.querySelector('#delet')
+      //   function deletcard () {
+
+      //   }
 
       // const plyrname = document.querySelector("#plyrname");
       // const plyrnumber = document.querySelector("#plyrnumber");
@@ -94,22 +174,62 @@ function playercard() {
           </div>
         </div>
       </div>
-      <div class="relative mt-3">
-          <select class="w-full rounded-lg border border-[#344155] bg-[#1e293b] px-4 py-3 pr-10 text-sm text-gray-300">
-            <option>Sur le banc</option>
-            <option>DG - Défenseur gauche</option>
-            <option>DC - Défenseur central 1</option>
-            <option>DC - Défenseur central 2</option>
-            <option>DD - Défenseur droit</option>
+      <div id="Dpositions" class="relative mt-3">
+          <select  class="positionSelect w-full rounded-lg border border-[#344155] bg-[#1e293b] px-4 py-3 pr-10 text-sm text-gray-300">
+            <option value="banc">Sur le banc</option>
+            <option value="DG">DG - Défenseur gauche</option>
+            <option value="DC1">DC - Défenseur central 1</option>
+            <option value="DC2">DC - Défenseur central 2</option>
+            <option value="DD">DD - Défenseur droit</option>
           </select>
         </div>
     `;
-      function editcard() {
-        overlay.classList.remove("hidden");
-        inputArray[i].name == player.value;
-        inputArray[i].number == player.value;
+      //SECOND WAY
+
+      function dg(player, position) {
+        const target = document.querySelector(`#${position}`);
+
+        if (!target) return;
+
+        target.innerHTML = `
+
+  <p class="text-blue-400 font-bold">${player.number}</p>
+  <p class="text-gray-400 text-xs">${player.name}</p>
+`;
+
+        target.classList.remove("border-dashed");
       }
-      editbtn.addEventListener("click", editcard);
+
+      const positionSelects = document.querySelectorAll(".positionSelect");
+
+      positionSelects.forEach((positionSelect, index) => {
+        positionSelect.addEventListener("change", function () {
+          const defenders = inputArray.filter(
+            (player) => player.role === "Défenseur",
+          );
+
+          const player = defenders[index];
+
+          if (!player) return;
+          if (player.position !== "banc") {
+            const oldPosition = document.querySelector(`#${player.position}`);
+
+            if (oldPosition) {
+              oldPosition.innerHTML = `
+          <p class="text-blue-400 font-bold">${player.position}</p>
+          <p class="text-gray-400 text-xs">Libre</p>
+        `;
+              oldPosition.classList.add("border-dashed");
+            }
+          }
+
+          player.position = positionSelect.value;
+
+          if (player.position !== "banc") {
+            dg(player, player.position);
+          }
+        });
+      });
     } else if (player.role == "Milieu") {
       playerCard.innerHTML += `
       <div class="relative w-full max-w-[350px] border-green-500 rounded-2xl border border-[#344155] bg-[#1e293b] p-4 m-2">
@@ -178,8 +298,8 @@ function playercard() {
         inputArray[i].number == player.value;
       }
       editbtn.addEventListener("click", editcard);
-    };
-    let allplayers = document.querySelector('#playersn');
+    }
+    let allplayers = document.querySelector("#playersn");
     allplayers.innerText = `${i + 1} joueur(s)`;
   }
 }
@@ -220,6 +340,7 @@ function fconfirm() {
       name: playername,
       number: playernumber,
       role: playerRole,
+      position: "banc",
     });
 
     playercard();
