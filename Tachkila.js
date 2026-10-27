@@ -32,10 +32,10 @@ function playercard() {
       <div class="relative w-full max-w-[350px] border-[#d4a32f] rounded-2xl border border-[#344155] bg-[#1e293b] p-4 m-2">
         <div class="flex items-center justify-between">
           <div class="flex items-center gap-4">
-            <div id="plyrname" class="text-[#d4a32f]">${player.number}</div>
+            <div class="text-[#d4a32f]">${player.number}</div>
 
             <div>
-              <h2 id="plyrnumber" class="text-gray-300">${player.name}</h2>
+              <h2 class="text-gray-300">${player.name}</h2>
               <p class="text-sm text-[#d4a32f]">${player.role}</p>
             </div>
           </div>
@@ -46,17 +46,19 @@ function playercard() {
           </div>
         </div>
       </div>
-      <div class="relative mt-3">
-          <select class="w-full rounded-lg border border-[#344155] bg-[#1e293b] px-4 py-3 pr-10 text-sm text-gray-300">
-            <option>GB - Gardien</option>
+      <div id="Dpositions" class="relative mt-3">
+          <select data-player-index="${i}" class="positionSelect w-full rounded-lg border border-[#344155] bg-[#1e293b] px-4 py-3 pr-10 text-sm text-gray-300">
+            <option value="banc">Sur le banc</option>
+            <option value="GB">GB - Gardien</option>
           </select>
         </div>
     `;
       //show
+
       function GardienTrn() {
-        const Gardient = document.querySelector("#Gardient");
-        Gardient.classList.remove("border-dashed");
-        Gardient.innerHTML = `
+        const GB = document.querySelector("#GB");
+        GB.classList.remove("border-dashed");
+        GB.innerHTML = `
         <div class="col-start-1 col-span-2 row-start-4 row-span-3 h-full bg-[#111827] border-2 border-yellow-500 rounded-2xl">
                         <div class="flex items-center justify-center h-full gap-2">
                             <span
@@ -68,23 +70,46 @@ function playercard() {
                         </div>
                     </div>`;
       }
-      GardienTrn();
-      //delet
-      document.querySelectorAll('.delete-btn').forEach((btn)=> {
-      btn.addEventListener('click',function () {
-        const index = Number(this.dataset.index);
-        inputArray.splice(index, 1)
-        playercard();
+      // GardienTrn();
 
-        if (player.position && player.position !== "banc") {
-          const oldPosition = document.querySelector(`#${player.position}`)
-          if (oldPosition) {
-            oldPosition.innerHTML ="libre"
-            oldPosition.classList.add('border-dashed')
+      function gb(player, position) {
+        const target = document.querySelector(`#${position}`);
+
+        if (!target) return;
+
+        GardienTrn();
+      }
+      const positionSelects = document.querySelectorAll(".positionSelect");
+
+      positionSelects.forEach((positionSelect, index) => {
+        positionSelect.addEventListener("change", function () {
+          const gardien = inputArray.filter(
+            (player) => player.role === "Gardien",
+          );
+
+          const playerIndex = Number (positionSelect.dataset.playerIndex);
+          const player = inputArray[playerIndex];
+
+          if (!player) return;
+          if (player.position !== "banc") {
+            const oldPosition = document.querySelector(`#${player.position}`);
+
+            if (oldPosition) {
+              oldPosition.innerHTML = `
+          <p class="text-yellow-400 font-bold">${player.position}</p>
+          <p class="text-gray-400 text-xs">Libre</p>
+        `;
+              oldPosition.classList.add("border-dashed");
+            }
           }
-        }
-      })
-    })
+          player.position = positionSelect.value;
+
+          if (player.position !== "banc") {
+            gb(player, player.position);
+          }
+        });
+      });
+
   
 
       //edit button
@@ -249,7 +274,7 @@ function playercard() {
           }
         });
       });
-
+//deletbtn
       document.querySelectorAll('.delete-btn').forEach((btn)=> {
       btn.addEventListener('click',function () {
         const index = Number(this.dataset.index);
@@ -404,7 +429,7 @@ function playercard() {
 
       positionSelects.forEach((positionSelect, index) => {
         positionSelect.addEventListener("change", function () {
-          const defenders = inputArray.filter(
+          const attaquant = inputArray.filter(
             (player) => player.role === "Attaquant",
           );
 
@@ -454,21 +479,7 @@ function playercard() {
     allplayers.innerText = `${inputArray.length} joueur(s)`;    
   }
 
-  // document.querySelectorAll('.delete-btn').forEach((btn)=> {
-  //     btn.addEventListener('click',function () {
-  //       const index = Number(this.dataset.index);
-  //       inputArray.splice(index, 1)
-  //       playercard();
-
-  //       if (player.position && player.position !== "banc") {
-  //         const oldPosition = document.querySelector(`#${player.position}`)
-  //         if (oldPosition) {
-  //           oldPosition.innerHTML ="libre"
-  //           oldPosition.classList.add('border-dashed')
-  //         }
-  //       }
-  //     })
-  //   })
+//deletbtn
 }
 
 const confirm = document.querySelector("#confirm");
