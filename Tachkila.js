@@ -175,7 +175,7 @@ function playercard() {
         </div>
       </div>
       <div id="Dpositions" class="relative mt-3">
-          <select  class="positionSelect w-full rounded-lg border border-[#344155] bg-[#1e293b] px-4 py-3 pr-10 text-sm text-gray-300">
+          <select data-player-index="${i}" class="positionSelect w-full rounded-lg border border-[#344155] bg-[#1e293b] px-4 py-3 pr-10 text-sm text-gray-300">
             <option value="banc">Sur le banc</option>
             <option value="DG">DG - Défenseur gauche</option>
             <option value="DC1">DC - Défenseur central 1</option>
@@ -208,7 +208,8 @@ function playercard() {
             (player) => player.role === "Défenseur",
           );
 
-          const player = defenders[index];
+          const playerIndex = Number (positionSelect.dataset.playerIndex);
+          const playerrrr = inputArray[playerIndex];
 
           if (!player) return;
           if (player.position !== "banc") {
@@ -250,7 +251,7 @@ function playercard() {
         </div>
       </div>
       <div id="Mpositions" class="relative mt-3">
-          <select class="positionSelect w-full rounded-lg border border-[#344155] bg-[#1e293b] px-4 py-3 pr-10 text-sm text-gray-300">
+          <select data-player-index="${i}" class="positionSelect w-full rounded-lg border border-[#344155] bg-[#1e293b] px-4 py-3 pr-10 text-sm text-gray-300">
             <option value="banc">Sur le banc</option>
             <option value="MG">MG - Milieu gauche</option>
             <option value="MC1">MC - Milieu central 1</option>
@@ -281,7 +282,8 @@ function playercard() {
             (player) => player.role === "Milieu",
           );
 
-          const player = Milieu[index];
+          const playerIndex = Number (positionSelect.dataset.playerIndex);
+          const playerr = inputArray[playerIndex];
 
           if (!player) return;
           if (player.position !== "banc") {
@@ -322,23 +324,64 @@ function playercard() {
           </div>
         </div>
       </div>
-      <div class="relative mt-3">
-          <select class="w-full rounded-lg border border-[#344155] bg-[#1e293b] px-4 py-3 pr-10 text-sm text-gray-300">
-            <option>Sur le banc</option>
-            <option>BU - Buteur 1</option>
-            <option>BU - Buteur 2</option>
+      <div id="Apositions" class="relative mt-3">
+          <select data-player-index="${i}" class="positionSelect w-full rounded-lg border border-[#344155] bg-[#1e293b] px-4 py-3 pr-10 text-sm text-gray-300">
+            <option value="banc">Sur le banc</option>
+            <option value="BU1">BU1 - Buteur 1</option>
+            <option value="BU2">BU2 - Buteur 2</option>
           </select>
         </div>
     `;
-      function editcard() {
-        overlay.classList.remove("hidden");
-        inputArray[i].name == player.value;
-        inputArray[i].number == player.value;
+     function du(player, position) {
+        const target = document.querySelector(`#${position}`);
+
+        if (!target) return;
+
+        target.innerHTML = `
+
+  <p class="text-red-400 font-bold">${player.number}</p>
+  <p class="text-gray-400 text-xs">${player.name}</p>
+`;
+
+        target.classList.remove("border-dashed");
       }
-      editbtn.addEventListener("click", editcard);
+
+      const positionSelects = document.querySelectorAll(".positionSelect");
+
+      positionSelects.forEach((positionSelect, index) => {
+        positionSelect.addEventListener("change", function () {
+          const defenders = inputArray.filter(
+            (player) => player.role === "Attaquant",
+          );
+
+          const playerIndex = Number(positionSelect.dataset.playerIndex);
+          const playerrr = inputArray[playerIndex]
+
+          if (!player) return;
+          if (player.position !== "banc") {
+            const oldPosition = document.querySelector(`#${player.position}`);
+
+            if (oldPosition) {
+              oldPosition.innerHTML = `
+          <p class="text-red-400 font-bold">${player.position}</p>
+          <p class="text-gray-400 text-xs">Libre</p>
+        `;
+              oldPosition.classList.add("border-dashed");
+            }
+          }
+
+          player.position = positionSelect.value;
+
+          if (player.position !== "banc") {
+            du(player, player.position);
+          }
+        });
+      });
     }
+    console.log(document.querySelectorAll(".positionSelect").length);
     let allplayers = document.querySelector("#playersn");
     allplayers.innerText = `${i + 1} joueur(s)`;
+    
   }
 }
 
