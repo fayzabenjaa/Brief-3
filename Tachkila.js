@@ -18,6 +18,12 @@ openbtn.addEventListener("click", openpopup);
 closebtn.addEventListener("click", closepopup);
 Annuler.addEventListener("click", Annulerpopup);
 
+function updateplayernumber () {
+    console.log(document.querySelectorAll(".positionSelect").length);
+    let allplayers = document.querySelector("#playersn");
+    allplayers.innerText = `${inputArray.length} joueur(s)`; 
+    } 
+
 function playercard() {
   const playerCard = document.querySelector("#player-card");
   playerCard.innerHTML = ` `;
@@ -114,6 +120,7 @@ function playercard() {
       btn.addEventListener('click',function () {
         const index = Number(this.dataset.index);
         inputArray.splice(index, 1)
+        updateplayernumber();
         playercard();
 
         if (player.position && player.position !== "banc") {
@@ -305,6 +312,7 @@ function playercard() {
       btn.addEventListener('click',function () {
         const index = Number(this.dataset.index);
         inputArray.splice(index, 1)
+        updateplayernumber();
         playercard();
 
         if (player.position && player.position !== "banc") {
@@ -397,6 +405,7 @@ function playercard() {
       btn.addEventListener('click',function () {
         const index = Number(this.dataset.index);
         inputArray.splice(index, 1)
+        updateplayernumber();
         playercard();
 
         if (player.position && player.position !== "banc") {
@@ -487,6 +496,7 @@ function playercard() {
       btn.addEventListener('click',function () {
         const index = Number(this.dataset.index);
         inputArray.splice(index, 1)
+        updateplayernumber();
         playercard();
 
         if (player.position && player.position !== "banc") {
@@ -498,11 +508,8 @@ function playercard() {
         }
       })
     })
-    }
-
-    console.log(document.querySelectorAll(".positionSelect").length);
-    let allplayers = document.querySelector("#playersn");
-    allplayers.innerText = `${inputArray.length} joueur(s)`;    
+    } 
+    updateplayernumber(); 
   }
 
 //deletbtn
