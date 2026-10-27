@@ -45,7 +45,7 @@ function playercard() {
           </div>
 
           <div class="flex items-center gap-4">
-            <button data-id="${player.id}" id="editbtn" class="text-[#c17a62]">edit</button>
+            <button data-id="${player.id}" id="editbtn" class="edit-btn text-[#c17a62]">edit</button>
             <button data-id="${player.id}" class="delete-btn text-gray-500">delete</button>
           </div>
         </div>
@@ -116,7 +116,7 @@ function playercard() {
       //DELET
 
       //edit button
-      const editoverlay = document.querySelector("#bgedit");
+      
       
     } else if (player.role == "Défenseur") {
       playerCard.innerHTML += `
@@ -132,7 +132,7 @@ function playercard() {
           </div>
 
           <div class="flex items-center gap-4">
-            <button id="edit" class="text-[#c17a62]">edit</button>
+            <button data-id="${player.id}" class="edit-btn text-[#c17a62]">edit</button>
             <button data-id="${player.id}" class="delete-btn text-gray-500">delete</button>
           </div>
         </div>
@@ -209,7 +209,7 @@ function playercard() {
           </div>
 
           <div class="flex items-center gap-4">
-            <button id="edit" class="text-[#c17a62]">edit</button>
+            <button data-id="${player.id}" class="edit-btn text-[#c17a62]">edit</button>
             <button data-id="${player.id}" class="delete-btn text-gray-500">delete</button>
           </div>
         </div>
@@ -283,7 +283,7 @@ function playercard() {
           </div>
 
           <div class="flex items-center gap-4">
-            <button id="edit" class="text-[#c17a62]">edit</button>
+            <button data-id="${player.id}" class="edit-btn text-[#c17a62]">edit</button>
             <button data-id="${player.id}" class="delete-btn text-gray-500">delete</button>
           </div>
         </div>
@@ -441,3 +441,76 @@ function fconfirm() {
 }
 confirm.addEventListener("click", fconfirm);
 playercard();
+
+
+const editOverlay = document.querySelector("#bgedit");
+const editName = document.querySelector("#editplayer");
+const editNumber = document.querySelector("#editnumber");
+const editSave = document.querySelector("#editSave");
+
+let editingPlayerId = null;
+
+function editPlayer(playerId){
+  const player = inputArray.find(
+    p=>p.id === Number(playerId)
+  )
+
+  editingPlayerId = Number(playerId);
+
+  editName.value = player.name;
+  editNumber.value = player.number;
+
+  document.querySelectorAll('#editposte input[name="editpostee"]').forEach(radio => {radio.checked = radio.value === player.role});
+  editOverlay.classList.remove("hidden");
+
+}
+
+document.querySelector("#player-card").addEventListener("click" , e=> {
+  const button = e.target.closest(".edit-btn");
+  if(button){
+    editPlayer(button.dataset.id)
+  }
+});
+
+document.querySelector("#editX").addEventListener("click", ()=> {
+  editOverlay.classList.add("hidden")
+});
+document.querySelector("#editAnnuler").addEventListener("click", ()=> {
+  editOverlay.classList.add("hidden")
+});
+
+editSave.addEventListener("click", ()=>{
+   const player = inputArray.find(
+    p=>p.id === editingPlayerId
+  );
+
+  const newName = editName.value;
+  const newNumber = Number(editNumber.value);
+  const selectedRole = document.querySelector('#editposte input[name="editpostee"]:checked')
+
+  // if (newNumber == "" && newNumber == "") {
+  //   error.innerText = "entre nom";
+  //   errorn.innerText = "entre numbre";
+  // } else if (playername == "") {
+  //   error.innerText = "entre nom";
+  //   errorn.classList.add("hidden");
+  // } else if (playernumber == "") {
+  //   errorn.innerText = "entre numbre";
+  //   error.classList.add("hidden");
+  // } else if (!/^[a-zA-Z]+$/.test(playername)) {
+  //   error.innerText = "les numéros ne sont pas valides";
+  // }
+
+  player.name = newName;
+  player.number = newNumber;
+  if(player.role !== selectedRole.value){
+    player.role = selectedRole.value;
+    player.position = "banc";
+  }
+
+  savePlayer();
+  playercard();
+
+  editOverlay.classList.add("hidden");
+
+})

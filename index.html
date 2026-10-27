@@ -293,13 +293,16 @@
                 <button type="submit" id="confirm" class="bg-green-600 rounded-2xl p-2 m-3 text-white">Ajouter</button>
             </div>
         </div>
-        <div id="editpopup"></div>
-        <!-- <div id="bgedit"
-        class="flex justify-center w-full h-full bg-[rgba(0,0,0,0.5)] fixed inset-0 overflow-y-auto overflow-x-hidden fixed z-500 p-2 hidden">
+    </div>
+
+
+
+    <div id="bgedit"
+        class="hidden flex justify-center w-full h-full bg-[rgba(0,0,0,0.5)] fixed inset-0 overflow-y-auto overflow-x-hidden fixed z-500 p-2   ">
         <div id="editpopup" class="bg-[#1E293B] rounded-2xl relative w-100 h-150 flex-row text-start ">
             <div class="flex justify-between">
                 <p class="text-white font-bold m-5 ">Modifier le joueur</p>
-                <button class="text-gray-400  m-5" id="X">X</button>
+                <button class="text-gray-400  m-5" id="editX">X</button>
             </div>
             <div class="flex flex-col">
                 <label for="player" class="text-gray-400 m-3">nom complet</label>
@@ -313,28 +316,28 @@
 
                 <label id="Gardien"
                     class="bg-[#0F172A] rounded-2xl text-white flex justify-center p-4 gap-2 items-center cursor-pointer has-[:checked]:ring-2 has-[:checked]:ring-yellow-500">
-                    <input type="radio" name="position" value="Gardien" class="appearance-none">
+                    <input type="radio" name="editpostee" value="Gardien" class="appearance-none">
                     <div class="w-2 h-2 bg-yellow-300 rounded-full"></div>
                     Gardien
                 </label>
 
                 <label id="Défenseur"
                     class="bg-[#0F172A] rounded-2xl text-white flex justify-center p-4 gap-2 items-center cursor-pointer has-[:checked]:ring-2 has-[:checked]:ring-blue-500">
-                    <input type="radio" name="position" value="Défenseur" class=" appearance-none">
+                    <input type="radio" name="editpostee" value="Défenseur" class=" appearance-none">
                     <div class="w-2 h-2 bg-blue-600 rounded-full"></div>
                     Défenseur
                 </label>
 
                 <label
                     class="bg-[#0F172A] rounded-2xl text-white flex justify-center p-4 gap-2 items-center cursor-pointer has-[:checked]:ring-2 has-[:checked]:ring-green-500">
-                    <input type="radio" name="position" value="Milieu" class="appearance-none">
+                    <input type="radio" name="editpostee" value="Milieu" class="appearance-none">
                     <div class="w-2 h-2 bg-green-600 rounded-full"></div>
                     Milieu
                 </label>
 
                 <label
                     class="bg-[#0F172A] rounded-2xl text-white flex justify-center p-4 gap-2 items-center cursor-pointer has-[:checked]:ring-2 has-[:checked]:ring-red-500">
-                    <input type="radio" name="position" value="Attaquant" class="appearance-none">
+                    <input type="radio" name="editpostee" value="Attaquant" class="appearance-none">
                     <div class="w-2 h-2 bg-red-600 rounded-full"></div>
                     Attaquant
                 </label>
@@ -349,11 +352,11 @@
                 <p id="errorn" class="text-red-400 text-1xl m-1 "></p>
             </div>
             <div class="flex justify-end">
-                <button id="Annuler" class="text-white bg-gray-500 rounded-2xl p-2 m-3">Annuler</button>
-                <button type="submit" id="confirm" class="bg-green-600 rounded-2xl p-2 m-3 text-white">Enregistrer</button>
+                <button id="editAnnuler" class="text-white bg-gray-500 rounded-2xl p-2 m-3">Annuler</button>
+                <button type="submit" id="editSave"
+                    class="bg-green-600 rounded-2xl p-2 m-3 text-white">Enregistrer</button>
             </div>
-        </div> -->
-    </div>
+        </div>
     </div>
 
 
