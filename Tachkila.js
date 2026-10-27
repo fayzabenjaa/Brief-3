@@ -42,7 +42,7 @@ function playercard() {
 
           <div class="flex items-center gap-4">
             <button id="editbtn" class="text-[#c17a62]">edit</button>
-            <button id="deletbtn" class="text-gray-500">delete</button>
+            <button data-index="${i}" class="delete-btn text-gray-500">delete</button>
           </div>
         </div>
       </div>
@@ -52,7 +52,7 @@ function playercard() {
           </select>
         </div>
     `;
-      //edit in the tiran
+      //show
       function GardienTrn() {
         const Gardient = document.querySelector("#Gardient");
         Gardient.classList.remove("border-dashed");
@@ -69,6 +69,24 @@ function playercard() {
                     </div>`;
       }
       GardienTrn();
+      //delet
+      document.querySelectorAll('.delete-btn').forEach((btn)=> {
+      btn.addEventListener('click',function () {
+        const index = Number(this.dataset.index);
+        inputArray.splice(index, 1)
+        playercard();
+
+        if (player.position && player.position !== "banc") {
+          const oldPosition = document.querySelector(`#${player.position}`)
+          if (oldPosition) {
+            oldPosition.innerHTML ="libre"
+            oldPosition.classList.add('border-dashed')
+          }
+        }
+      })
+    })
+  
+
       //edit button
       const editoverlay = document.querySelector("#bgedit");
       // const editpopup = document.querySelector("#editpopup");
@@ -170,7 +188,7 @@ function playercard() {
 
           <div class="flex items-center gap-4">
             <button id="edit" class="text-[#c17a62]">edit</button>
-            <button id="delet" class="text-gray-500">delete</button>
+            <button data-index="${i}" class="delete-btn text-gray-500">delete</button>
           </div>
         </div>
       </div>
@@ -209,7 +227,7 @@ function playercard() {
           );
 
           const playerIndex = Number (positionSelect.dataset.playerIndex);
-          const playerrrr = inputArray[playerIndex];
+          const player = inputArray[playerIndex];
 
           if (!player) return;
           if (player.position !== "banc") {
@@ -231,6 +249,24 @@ function playercard() {
           }
         });
       });
+
+      document.querySelectorAll('.delete-btn').forEach((btn)=> {
+      btn.addEventListener('click',function () {
+        const index = Number(this.dataset.index);
+        inputArray.splice(index, 1)
+        playercard();
+
+        if (player.position && player.position !== "banc") {
+          const oldPosition = document.querySelector(`#${player.position}`)
+          if (oldPosition) {
+            oldPosition.innerHTML ="libre"
+            oldPosition.classList.add('border-dashed')
+          }
+        }
+      })
+    })
+
+
     } else if (player.role == "Milieu") {
       playerCard.innerHTML += `
       <div class="relative w-full max-w-[350px] border-green-500 rounded-2xl border border-[#344155] bg-[#1e293b] p-4 m-2">
@@ -246,7 +282,7 @@ function playercard() {
 
           <div class="flex items-center gap-4">
             <button id="edit" class="text-[#c17a62]">edit</button>
-            <button id="delete" class="text-gray-500">delete</button>
+            <button data-index="${i}" class="delete-btn text-gray-500">delete</button>
           </div>
         </div>
       </div>
@@ -283,7 +319,7 @@ function playercard() {
           );
 
           const playerIndex = Number (positionSelect.dataset.playerIndex);
-          const playerr = inputArray[playerIndex];
+          const player = inputArray[playerIndex];
 
           if (!player) return;
           if (player.position !== "banc") {
@@ -305,6 +341,24 @@ function playercard() {
           }
         });
       });
+
+      document.querySelectorAll('.delete-btn').forEach((btn)=> {
+      btn.addEventListener('click',function () {
+        const index = Number(this.dataset.index);
+        inputArray.splice(index, 1)
+        playercard();
+
+        if (player.position && player.position !== "banc") {
+          const oldPosition = document.querySelector(`#${player.position}`)
+          if (oldPosition) {
+            oldPosition.innerHTML ="libre"
+            oldPosition.classList.add('border-dashed')
+          }
+        }
+      })
+    })
+
+
     } else if (player.role == "Attaquant") {
       playerCard.innerHTML += `
       <div class="relative w-full max-w-[350px] border-red-500 rounded-2xl border border-[#344155] bg-[#1e293b] p-4">
@@ -320,7 +374,7 @@ function playercard() {
 
           <div class="flex items-center gap-4">
             <button id="edit" class="text-[#c17a62]">edit</button>
-            <button id="delete" class="text-gray-500">delete</button>
+            <button data-index="${i}" class="delete-btn text-gray-500">delete</button>
           </div>
         </div>
       </div>
@@ -355,7 +409,7 @@ function playercard() {
           );
 
           const playerIndex = Number(positionSelect.dataset.playerIndex);
-          const playerrr = inputArray[playerIndex]
+          const player = inputArray[playerIndex]
 
           if (!player) return;
           if (player.position !== "banc") {
@@ -377,12 +431,44 @@ function playercard() {
           }
         });
       });
+
+     document.querySelectorAll('.delete-btn').forEach((btn)=> {
+      btn.addEventListener('click',function () {
+        const index = Number(this.dataset.index);
+        inputArray.splice(index, 1)
+        playercard();
+
+        if (player.position && player.position !== "banc") {
+          const oldPosition = document.querySelector(`#${player.position}`)
+          if (oldPosition) {
+            oldPosition.innerHTML ="libre"
+            oldPosition.classList.add('border-dashed')
+          }
+        }
+      })
+    })
     }
+
     console.log(document.querySelectorAll(".positionSelect").length);
     let allplayers = document.querySelector("#playersn");
-    allplayers.innerText = `${i + 1} joueur(s)`;
-    
+    allplayers.innerText = `${inputArray.length} joueur(s)`;    
   }
+
+  // document.querySelectorAll('.delete-btn').forEach((btn)=> {
+  //     btn.addEventListener('click',function () {
+  //       const index = Number(this.dataset.index);
+  //       inputArray.splice(index, 1)
+  //       playercard();
+
+  //       if (player.position && player.position !== "banc") {
+  //         const oldPosition = document.querySelector(`#${player.position}`)
+  //         if (oldPosition) {
+  //           oldPosition.innerHTML ="libre"
+  //           oldPosition.classList.add('border-dashed')
+  //         }
+  //       }
+  //     })
+  //   })
 }
 
 const confirm = document.querySelector("#confirm");
