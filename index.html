@@ -13,7 +13,7 @@
 <body>
     <header id="header" class="bg-[#1E293B] text-white p-4">
 
-        <div class="grid grid-cols-3">
+        <div class="grid grid-cols-3 max-sm:grid-cols-1 max-sm:gap-3">
             <div class="flex gap-2">
                 <img src="ball-football-svgrepo-com (1).svg" class="w-5 bg-white rounded-4xl">
                 <a>TACHKILA</a>
@@ -39,8 +39,8 @@
         </div>
     </header>
 
-    <div class="grid grid-cols-4 min-h-screen w-full text-white">
-        <aside class="bg-[#1E293B] " id="aside">
+    <div class="grid grid-cols-4 min-h-screen w-full text-white max-sm:grid grid-cols-1">
+        <aside class="bg-[#1E293B] max-sm: w-full" id="aside">
             <button id="Ajouter" class="p-2 ml-3 bg-[#22C55E] text-center w-[18em] rounded-lg">+Ajouter un
                 joueur</button>
             <div class="flex justify-between m-3">
@@ -59,7 +59,7 @@
 
 
         </aside>
-        <main class="col-start-2 col-end-5 bg-[#0F172A] p-30">
+        <main class="col-start-2 col-end-5 bg-[#0F172A] p-30 max-sm: col-start-1 max-sm: col-end-2 max-sm: p-2">
 
 
 
@@ -349,7 +349,7 @@
                 <label for="number" class="text-gray-400 m-2">numéro(1 à 99)</label>
                 <input type="number" min="1" max="99" id="editnumber" name="number" placeholder="numero"
                     class="bg-[#0F172A] rounded-2xl p-4 ml-3 text-white m-3">
-                <p id="errornedit" class="text-red-400 text-1xl m-1 "></p>
+                <p id="errorn" class="text-red-400 text-1xl m-1 "></p>
             </div>
             <div class="flex justify-end">
                 <button id="editAnnuler" class="text-white bg-gray-500 rounded-2xl p-2 m-3">Annuler</button>
