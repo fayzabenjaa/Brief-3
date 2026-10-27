@@ -488,18 +488,26 @@ editSave.addEventListener("click", ()=>{
   const newNumber = Number(editNumber.value);
   const selectedRole = document.querySelector('#editposte input[name="editpostee"]:checked')
 
-  // if (newNumber == "" && newNumber == "") {
-  //   error.innerText = "entre nom";
-  //   errorn.innerText = "entre numbre";
-  // } else if (playername == "") {
-  //   error.innerText = "entre nom";
-  //   errorn.classList.add("hidden");
-  // } else if (playernumber == "") {
-  //   errorn.innerText = "entre numbre";
-  //   error.classList.add("hidden");
-  // } else if (!/^[a-zA-Z]+$/.test(playername)) {
-  //   error.innerText = "les numéros ne sont pas valides";
-  // }
+  const erroredit = document.querySelector('#erroredit')
+  const errornedit = document.querySelector('#errornedit')
+
+  erroredit.innerHTML = "";
+  errornedit.innerHTML = "";
+  erroredit.classList.remove('hidden');
+  errornedit.classList.remove('hidden');
+
+  if (newName == ""){
+    erroredit.innerText = "entre nom";
+    return;
+  }
+  if(!/^[a-zA-Z]+$/.test(newName)) {
+    erroredit.innerText = "les numéros ne sont pas valides";
+    return;
+  }
+  if (newNumber == ""){
+    errornedit.innerText = "entre numbre";
+    return;
+  }
 
   player.name = newName;
   player.number = newNumber;
