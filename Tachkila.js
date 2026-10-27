@@ -18,19 +18,17 @@ openbtn.addEventListener("click", openpopup);
 closebtn.addEventListener("click", closepopup);
 Annuler.addEventListener("click", Annulerpopup);
 
-function updateplayernumber () {
-    console.log(document.querySelectorAll(".positionSelect").length);
-    let allplayers = document.querySelector("#playersn");
-    allplayers.innerText = `${inputArray.length} joueur(s)`; 
-    } 
+function updateplayernumber() {
+  console.log(document.querySelectorAll(".positionSelect").length);
+  let allplayers = document.querySelector("#playersn");
+  allplayers.innerText = `${inputArray.length} joueur(s)`;
+}
 
 function playercard() {
   const playerCard = document.querySelector("#player-card");
   playerCard.innerHTML = ` `;
 
   for (let i = 0; i < inputArray.length; i++) {
-    const editbtn = document.querySelector("#edit");
-    const deletebtn = document.querySelector("#delete");
     const player = inputArray[i];
 
     if (player.role == "Gardien") {
@@ -47,8 +45,8 @@ function playercard() {
           </div>
 
           <div class="flex items-center gap-4">
-            <button id="editbtn" class="text-[#c17a62]">edit</button>
-            <button data-index="${i}" class="delete-btn text-gray-500">delete</button>
+            <button data-id="${player.id}" id="editbtn" class="text-[#c17a62]">edit</button>
+            <button data-id="${player.id}" class="delete-btn text-gray-500">delete</button>
           </div>
         </div>
       </div>
@@ -93,7 +91,7 @@ function playercard() {
             (player) => player.role === "Gardien",
           );
 
-          const playerIndex = Number (positionSelect.dataset.playerIndex);
+          const playerIndex = Number(positionSelect.dataset.playerIndex);
           const player = inputArray[playerIndex];
 
           if (!player) return;
@@ -116,121 +114,10 @@ function playercard() {
         });
       });
       //DELET
-      document.querySelectorAll('.delete-btn').forEach((btn)=> {
-      btn.addEventListener('click',function () {
-        const index = Number(this.dataset.index);
-        inputArray.splice(index, 1)
-        updateplayernumber();
-        playercard();
-
-        if (player.position && player.position !== "banc") {
-          const oldPosition = document.querySelector(`#${player.position}`)
-          if (oldPosition) {
-            oldPosition.innerHTML = `
-            <div id="GB"
-                        class="col-start-1 col-span-2 row-start-4 row-span-3 h-full bg-[#111827] border-2 border-dashed border-yellow-500 rounded-2xl">
-                        <div class="flex items-center justify-center h-full gap-2">
-                            <div>
-                                <p id="gb" class="text-yellow-500  font-bold">GB</p>
-                                <p id="nliber" class="text-gray-400 text-xs">libre</p>
-                            </div>
-                        </div>
-                    </div>
-            `;
-            
-          }
-        }
-      })
-    })
-  
 
       //edit button
       const editoverlay = document.querySelector("#bgedit");
-      // const editpopup = document.querySelector("#editpopup");
-      // editpopup.innerHTML = `
-      // <div id="bgedit"
-      //   class="flex justify-center w-full h-full bg-[rgba(0,0,0,0.5)] fixed inset-0 overflow-y-auto overflow-x-hidden fixed z-500 p-2 hidden">
-      //   <div id="editpopup" class="bg-[#1E293B] rounded-2xl relative w-100 h-150 flex-row text-start ">
-      //       <div class="flex justify-between">
-      //           <p class="text-white font-bold m-5 ">Modifier le joueur</p>
-      //           <button class="text-gray-400  m-5" id="X">X</button>
-      //       </div>
-      //       <div class="flex flex-col">
-      //           <label for="player" class="text-gray-400 m-3">nom complet</label>
-      //           <input id="editplayer" name="player" type="text" placeholder="nom du joueur"
-      //               class="bg-[#0F172A] rounded-2xl p-4 ml-3 text-white m-3">
-      //           <p id="error" class="text-red-400 text-1xl m-1"></p>
-      //       </div>
-      //       <p class="text-gray-400 m-3">poste</p>
-
-      //       <div id="editposte" class="grid grid-cols-2 gap-5 m-5">
-
-      //           <label id="Gardien"
-      //               class="bg-[#0F172A] rounded-2xl text-white flex justify-center p-4 gap-2 items-center cursor-pointer has-[:checked]:ring-2 has-[:checked]:ring-yellow-500">
-      //               <input type="radio" name="position" value="Gardien" class="appearance-none">
-      //               <div class="w-2 h-2 bg-yellow-300 rounded-full"></div>
-      //               Gardien
-      //           </label>
-
-      //           <label id="Défenseur"
-      //               class="bg-[#0F172A] rounded-2xl text-white flex justify-center p-4 gap-2 items-center cursor-pointer has-[:checked]:ring-2 has-[:checked]:ring-blue-500">
-      //               <input type="radio" name="position" value="Défenseur" class=" appearance-none">
-      //               <div class="w-2 h-2 bg-blue-600 rounded-full"></div>
-      //               Défenseur
-      //           </label>
-
-      //           <label
-      //               class="bg-[#0F172A] rounded-2xl text-white flex justify-center p-4 gap-2 items-center cursor-pointer has-[:checked]:ring-2 has-[:checked]:ring-green-500">
-      //               <input type="radio" name="position" value="Milieu" class="appearance-none">
-      //               <div class="w-2 h-2 bg-green-600 rounded-full"></div>
-      //               Milieu
-      //           </label>
-
-      //           <label
-      //               class="bg-[#0F172A] rounded-2xl text-white flex justify-center p-4 gap-2 items-center cursor-pointer has-[:checked]:ring-2 has-[:checked]:ring-red-500">
-      //               <input type="radio" name="position" value="Attaquant" class="appearance-none">
-      //               <div class="w-2 h-2 bg-red-600 rounded-full"></div>
-      //               Attaquant
-      //           </label>
-
-      //       </div>
-      //       <p id="errorr" class="text-red-400 text-1xl m-1"></p>
-
-      //       <div class="flex flex-col">
-      //           <label for="number" class="text-gray-400 m-2">numéro(1 à 99)</label>
-      //           <input type="number" min="1" max="99" id="editnumber" name="number" placeholder="numero"
-      //               class="bg-[#0F172A] rounded-2xl p-4 ml-3 text-white m-3">
-      //           <p id="errorn" class="text-red-400 text-1xl m-1 "></p>
-      //       </div>
-      //       <div class="flex justify-end">
-      //           <button id="Annuler" class="text-white bg-gray-500 rounded-2xl p-2 m-3">Annuler</button>
-      //           <button type="submit" id="confirm" class="bg-green-600 rounded-2xl p-2 m-3 text-white">Enregistrer</button>
-      //       </div>
-      //   </div>
-      //    </div>
-      // `;
-
-      // const editbtn = document.querySelector("#editbtn");
-      // function openeditpopup() {
-      //   editoverlay.classList.remove("hidden");
-      // }
-      // editbtn.addEventListener("click", openeditpopup());
-
-      //   //delet button
-      //   const deletbtn = document.querySelector('#delet')
-      //   function deletcard () {
-
-      //   }
-
-      // const plyrname = document.querySelector("#plyrname");
-      // const plyrnumber = document.querySelector("#plyrnumber");
-      // const newplayername = player.value;
-      // const newplayernumber = number.value;
-      // console.log(newplayername);
-      // console.log(newplayernumber);
-      // plyrname.innerHTML = newplayername;
-      // plyrnumber.innerHTML = newplayernumber;
-    
+      
     } else if (player.role == "Défenseur") {
       playerCard.innerHTML += `
       <div class="relative w-full max-w-[350px] border-blue-500 rounded-2xl border border-[#344155] bg-[#1e293b] p-4 m-2">
@@ -246,7 +133,7 @@ function playercard() {
 
           <div class="flex items-center gap-4">
             <button id="edit" class="text-[#c17a62]">edit</button>
-            <button data-index="${i}" class="delete-btn text-gray-500">delete</button>
+            <button data-id="${player.id}" class="delete-btn text-gray-500">delete</button>
           </div>
         </div>
       </div>
@@ -284,7 +171,7 @@ function playercard() {
             (player) => player.role === "Défenseur",
           );
 
-          const playerIndex = Number (positionSelect.dataset.playerIndex);
+          const playerIndex = Number(positionSelect.dataset.playerIndex);
           const player = inputArray[playerIndex];
 
           if (!player) return;
@@ -307,25 +194,7 @@ function playercard() {
           }
         });
       });
-//deletbtn
-      document.querySelectorAll('.delete-btn').forEach((btn)=> {
-      btn.addEventListener('click',function () {
-        const index = Number(this.dataset.index);
-        inputArray.splice(index, 1)
-        updateplayernumber();
-        playercard();
-
-        if (player.position && player.position !== "banc") {
-          const oldPosition = document.querySelector(`#${player.position}`)
-          if (oldPosition) {
-            oldPosition.innerHTML ="libre"
-            oldPosition.classList.add('border-dashed')
-          }
-        }
-      })
-    })
-
-
+      //deletbtn
     } else if (player.role == "Milieu") {
       playerCard.innerHTML += `
       <div class="relative w-full max-w-[350px] border-green-500 rounded-2xl border border-[#344155] bg-[#1e293b] p-4 m-2">
@@ -341,7 +210,7 @@ function playercard() {
 
           <div class="flex items-center gap-4">
             <button id="edit" class="text-[#c17a62]">edit</button>
-            <button data-index="${i}" class="delete-btn text-gray-500">delete</button>
+            <button data-id="${player.id}" class="delete-btn text-gray-500">delete</button>
           </div>
         </div>
       </div>
@@ -377,7 +246,7 @@ function playercard() {
             (player) => player.role === "Milieu",
           );
 
-          const playerIndex = Number (positionSelect.dataset.playerIndex);
+          const playerIndex = Number(positionSelect.dataset.playerIndex);
           const player = inputArray[playerIndex];
 
           if (!player) return;
@@ -400,25 +269,6 @@ function playercard() {
           }
         });
       });
-
-      document.querySelectorAll('.delete-btn').forEach((btn)=> {
-      btn.addEventListener('click',function () {
-        const index = Number(this.dataset.index);
-        inputArray.splice(index, 1)
-        updateplayernumber();
-        playercard();
-
-        if (player.position && player.position !== "banc") {
-          const oldPosition = document.querySelector(`#${player.position}`)
-          if (oldPosition) {
-            oldPosition.innerHTML ="libre"
-            oldPosition.classList.add('border-dashed')
-          }
-        }
-      })
-    })
-
-
     } else if (player.role == "Attaquant") {
       playerCard.innerHTML += `
       <div class="relative w-full max-w-[350px] border-red-500 rounded-2xl border border-[#344155] bg-[#1e293b] p-4">
@@ -434,7 +284,7 @@ function playercard() {
 
           <div class="flex items-center gap-4">
             <button id="edit" class="text-[#c17a62]">edit</button>
-            <button data-index="${i}" class="delete-btn text-gray-500">delete</button>
+            <button data-id="${player.id}" class="delete-btn text-gray-500">delete</button>
           </div>
         </div>
       </div>
@@ -446,7 +296,7 @@ function playercard() {
           </select>
         </div>
     `;
-     function du(player, position) {
+      function du(player, position) {
         const target = document.querySelector(`#${position}`);
 
         if (!target) return;
@@ -469,7 +319,7 @@ function playercard() {
           );
 
           const playerIndex = Number(positionSelect.dataset.playerIndex);
-          const player = inputArray[playerIndex]
+          const player = inputArray[playerIndex];
 
           if (!player) return;
           if (player.position !== "banc") {
@@ -491,34 +341,31 @@ function playercard() {
           }
         });
       });
-
-     document.querySelectorAll('.delete-btn').forEach((btn)=> {
-      btn.addEventListener('click',function () {
-        const index = Number(this.dataset.index);
-        inputArray.splice(index, 1)
-        updateplayernumber();
-        playercard();
-
-        if (player.position && player.position !== "banc") {
-          const oldPosition = document.querySelector(`#${player.position}`)
-          if (oldPosition) {
-            oldPosition.innerHTML ="libre"
-            oldPosition.classList.add('border-dashed')
-          }
-        }
-      })
-    })
-    } 
-    updateplayernumber(); 
+    }
   }
 
-//deletbtn
+  //deletbtn
+  document.querySelectorAll(".delete-btn").forEach((btn) => {
+    btn.addEventListener("click", function () {
+      const playerID = Number(this.dataset.id);
+
+      inputArray = inputArray.filter((player) => player.id !== playerID);
+
+      savePlayer();
+      playercard();
+    });
+  });
+  updateplayernumber();
 }
 
 const confirm = document.querySelector("#confirm");
 const nom = document.querySelector("#player");
 const number = document.querySelector("#number");
-let inputArray = [];
+let inputArray = JSON.parse(localStorage.getItem("players")) || [];
+
+function savePlayer() {
+  localStorage.setItem("players", JSON.stringify(inputArray));
+}
 
 function fconfirm() {
   const liste = document.querySelector("#liste");
@@ -530,6 +377,7 @@ function fconfirm() {
   const error = document.querySelector("#error");
   const errorn = document.querySelector("#errorn");
   const errorr = document.querySelector("#error");
+
 
   if (playernumber == "" && playername == "") {
     error.innerText = "entre nom";
@@ -547,13 +395,28 @@ function fconfirm() {
     errorn.classList.add("hidden");
     const playerRole = poste.value;
 
+    const limits = {
+      Gardien:1,
+      Défenseur:4,
+      Milieu:4,
+      Attaquant:2
+    }
+
+    const roleCounter = inputArray.filter(player => player.role === playerRole).length;
+
+    if (roleCounter >= limits[playerRole]){
+      alert("you cant add more")
+      return;
+    }
+
     inputArray.push({
+      id: Date.now(),
       name: playername,
       number: playernumber,
       role: playerRole,
       position: "banc",
     });
-
+    savePlayer();
     playercard();
     console.log(inputArray);
     for (let i = 0; i < inputArray.length; i++) {
@@ -577,5 +440,4 @@ function fconfirm() {
   return;
 }
 confirm.addEventListener("click", fconfirm);
-
-
+playercard();
