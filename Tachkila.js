@@ -109,7 +109,32 @@ function playercard() {
           }
         });
       });
+      //DELET
+      document.querySelectorAll('.delete-btn').forEach((btn)=> {
+      btn.addEventListener('click',function () {
+        const index = Number(this.dataset.index);
+        inputArray.splice(index, 1)
+        playercard();
 
+        if (player.position && player.position !== "banc") {
+          const oldPosition = document.querySelector(`#${player.position}`)
+          if (oldPosition) {
+            oldPosition.innerHTML = `
+            <div id="GB"
+                        class="col-start-1 col-span-2 row-start-4 row-span-3 h-full bg-[#111827] border-2 border-dashed border-yellow-500 rounded-2xl">
+                        <div class="flex items-center justify-center h-full gap-2">
+                            <div>
+                                <p id="gb" class="text-yellow-500  font-bold">GB</p>
+                                <p id="nliber" class="text-gray-400 text-xs">libre</p>
+                            </div>
+                        </div>
+                    </div>
+            `;
+            
+          }
+        }
+      })
+    })
   
 
       //edit button
@@ -198,6 +223,7 @@ function playercard() {
       // console.log(newplayernumber);
       // plyrname.innerHTML = newplayername;
       // plyrnumber.innerHTML = newplayernumber;
+    
     } else if (player.role == "Défenseur") {
       playerCard.innerHTML += `
       <div class="relative w-full max-w-[350px] border-blue-500 rounded-2xl border border-[#344155] bg-[#1e293b] p-4 m-2">
