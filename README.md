@@ -30,4 +30,8 @@
 
 - **Jira** : [Tableau de planification du projet](https://fayzabenjaa15.atlassian.net/jira/software/projects/SCRUM/boards/1?filter=&groupBy=none)
 
+## 6. présentation Canva
+
+- [Ma présentation Canva](https://canva.link/wx10n0dtk9dpfh0)
+
 
